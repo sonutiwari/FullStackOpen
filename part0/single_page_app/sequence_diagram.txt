@@ -1,0 +1,12 @@
+title Opening Single Page App(SPA)
+
+Browser->Server: HTTPS GET https://fullstack-exampleapp.herokuapp.com/spa
+note right of Server: Server process the request.
+Server->Browser: Redirects HTML Response.
+note right of Browser: Read the HTML file and found <link> tag.
+Browser->Server: HTTPS GET https://fullstack-exampleapp.herokuapp.com/main.css
+Server->Browser: main.css
+Browser->Server: HTTPS GET https://fullstack-exampleapp.herokuapp.com/spa.js
+Server->Browser: spa.js
+Browser->Server: HTTPS GET https://fullstack-exampleapp.herokuapp.com/data.json
+Browser->Server: data.json

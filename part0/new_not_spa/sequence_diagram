@@ -1,0 +1,8 @@
+title Creating New note in Single Page App(SPA)
+
+note over Browser: Browser nullifies the default event handler.
+note over Browser: Browser add the new result into local JSON.
+note over Browser: Browser update the view.
+note over Browser: Browser send the post request to server.
+Browser->Server: HTTPS POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+note over Server: Server update the JSON DATA.
