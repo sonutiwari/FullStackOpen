@@ -31,6 +31,7 @@ const App = (props) => {
       <h1>Anecdote with most votes</h1>
       {props.anecdotes[votes.indexOf(max)]}
 
+
     </div>
   )
 }
