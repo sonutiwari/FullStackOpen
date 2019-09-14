@@ -2,32 +2,35 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Button = (props) => {
-  const {text, fn} = props;
   return (
-    <button onClick={fn}>{text}</button>
+    <button onClick={props.click()}>{props.text}</button>
   );
 }
-
 const App = (props) => {
-  const [selected, setSelected] = useState(0);
-  const [votes, setVotes] = useState([]);
-  const handleVote = (votes) => {
-    if(votes.length > selected){
-      votes[selected] = votes[selected] + 1;
-      setVotes(selected);
-    } else {
-      votes.concat(1);
-    }
+  const [selected, setSelected] = useState(0)
+  const [votes, castVote] 
+              = useState(new Array(anecdotes.length).fill(0));
+  const voteCast = () => {
+    let temp = [...votes];
+    temp[selected] += 1;
+    castVote(temp);
   }
-  const handleNextClick = (selected) => {
-    setSelected((selected + 1) % votes.length);
+
+  const selectedSet = () => {
+    const length = anecdotes.length;
+    setSelected((selected + 1) % length)
   }
+  const max = Math.max(...votes);
   return (
     <div>
-      <p>{props.anecdotes[selected]}</p>
-      <p>has {props.votes[selected]} votes</p>
-      <Button text="vote" fn={handleVote(votes)}/>
-      <Button text="next anecdote" fn={handleNextClick(selected, votes)} />
+      <h1>Anecdote of the day</h1>
+      {props.anecdotes[selected]}<br />
+      has {votes[selected]} votes.<br />
+      <Button text="vote" click = {() => voteCast} />
+      <Button text="next anecdote" click = {() => selectedSet}/> <br />
+      <h1>Anecdote with most votes</h1>
+      {props.anecdotes[votes.indexOf(max)]}
+
     </div>
   )
 }
@@ -44,4 +47,4 @@ const anecdotes = [
 ReactDOM.render(
   <App anecdotes={anecdotes} />,
   document.getElementById('root')
-);
+)
